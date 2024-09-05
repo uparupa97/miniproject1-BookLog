@@ -202,7 +202,29 @@
 
 
 .readFinishBooks-section {
-  background-color: beige;
-  width: auto; 
+  background: linear-gradient(to right, #ffffff, #bc4f4f, #ffffff); /* 바다 같은 그라데이션 */
+  color: white;
+  width: 110%;  /* 배너에 꽉 차도록 설정 */
   height: auto; 
+  min-height: 400px; /* 최소 높이 설정 */
+  background-size: cover; /* 배경이 요소를 꽉 채우도록 설정 */
+  background-position: center; /* 배경의 위치를 중앙에 설정 */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 5px; 
+  padding: 5px; 
+  margin: 10px;
+  transform: translateX(-40px);
+}
+
+.readfinishaddbutton {
+  margin: 15px; 
+  border: solid 2px white; 
+  color: white; 
+}
+
+.readfinishaddbutton:hover {
+  background-color: rgba(255, 0, 0, 0.444); 
+  border: solid 2px white; 
 }
