@@ -73,98 +73,19 @@ document.getElementById('mainContent').style.display = 'none';
     memoModal.style.display = 'none';
   }
 
-  // 새 책 추가
-  function addBook() {
-    const bookImage = document.getElementById('bookImage').value;
-    const bookTitle = document.getElementById('bookTitle').value;
-    const bookSource = document.getElementById('bookSource').value;
-    const bookCategory = document.getElementById('bookCategory').value;
-    const bookMemo = document.getElementById('bookMemo').value;
+ let booksType = "add"; 
 
-    const newBook = {
-      image: bookImage,
-      title: bookTitle,
-      source: bookSource,
-      category: bookCategory,
-      memo: bookMemo
-    };
 
-    // 책 카드 생성 및 추가
-    createBookCard(newBook);
-
-    // 로컬 스토리지에 책 저장
-    const storedBooks = JSON.parse(localStorage.getItem('bookList')) || [];
-    storedBooks.push(newBook);
-    localStorage.setItem('bookList', JSON.stringify(storedBooks));
-
-    // 책 추가 모달 닫기
-    const addBookModal = new bootstrap.Modal(document.getElementById('addBookModal'));
-    addBookModal.hide();
-    document.getElementById('newBookForm').reset();
+  // setbooks cnrk
+  const setBookstype = (type) => { 
+    booksType = type ; 
   }
 
-  // 새 책 카드 생성
-  function createBookCard(book) {
-    const bookList = document.getElementById('bookList');
+  
 
-    const newCol = document.createElement('div');
-    newCol.className = 'col-6 col-sm-3 book-card';
-    newCol.innerHTML = `
-      <div class="card" style="width: 13rem;">
-        <img src="${book.image}" class="card-img-top" alt="${book.title}">
-        <div class="card-body">
-          <h5 class="card-title">${book.title}</h5>
-          <p class="card-text">${book.source}</p>
-          <p class="card-text">${book.category}</p>
-          <button class="btn btn-primary" onclick="openMemo(this)">내용 메모</button>
-          <div class="memoModal" style="display: none;">
-            <div class="memo-content">
-              <h5>메모 작성</h5>
-              <textarea rows="4" cols="50" placeholder="메모를 입력하세요...">${book.memo}</textarea><br>
-              <button class="btn btn-secondary" onclick="closeMemo(this)">Close</button>
-            </div>
-          </div>
-        </div>
-      </div>
-    `;
-
-    // 새로운 책 카드를 추가
-    bookList.appendChild(newCol);
-  }
 
 
   let currentBookIndex = null; // 현재 삭제 또는 이동할 책의 인덱스
-
-// 새 책 카드 생성 (기존 기능에 추가)
-function createBookCard(book, index) {
-  const bookList = document.getElementById('bookList');
-
-  const newCol = document.createElement('div');
-  newCol.className = 'col-6 col-sm-3 book-card';
-  newCol.innerHTML = `
-    <div class="card" style="width: 13rem;">
-      <img src="${book.image}" class="card-img-top" alt="${book.title}">
-      <div class="card-body">
-        <h5 class="card-title">${book.title}</h5>
-        <p class="card-text">${book.source}</p>
-        <p class="card-text">${book.category}</p>
-        <button class="btn btn-primary" onclick="openMemo(this)">내용 메모</button>
-        <button class="btn btn-warning" onclick="showMoveModal(${index})">읽었던 책으로 이동</button>
-        <button class="btn btn-danger" onclick="showDeleteModal(${index})">삭제</button>
-        <div class="memoModal" style="display: none;">
-          <div class="memo-content">
-            <h5>메모 작성</h5>
-            <textarea rows="4" cols="50" placeholder="메모를 입력하세요...">${book.memo}</textarea><br>
-            <button class="btn btn-secondary" onclick="closeMemo(this)">Close</button>
-          </div>
-        </div>
-      </div>
-    </div>
-  `;
-
-  // 새로운 책 카드를 추가
-  bookList.appendChild(newCol);
-}
 
 // 책 삭제 모달 열기
 function showDeleteModal(index) {
@@ -224,20 +145,89 @@ function moveBook() {
   moveModal.hide();
 }
 
-//읽은 책 추가 
-function addReadBook() {
-    const bookImageRead = document.getElementById('bookImageRead').value;
-    const bookTitleRead = document.getElementById('bookTitleRead').value;
-    const bookSourceRead = document.getElementById('bookSourceRead').value;
-    const bookCategoryRead = document.getElementById('bookCategoryRead').value;
-    const bookMemoRead = document.getElementById('bookMemoRead').value;
+const addBookModal = new bootstrap.Modal('#addBookModal');
+
+  // 새 책 추가
+  function addBook() {
+    const bookImage = document.getElementById('bookImage').value;
+    const bookTitle = document.getElementById('bookTitle').value;
+    const bookSource = document.getElementById('bookSource').value;
+    const bookCategory = document.getElementById('bookCategory').value;
+    const bookMemo = document.getElementById('bookMemo').value;
 
     const newBook = {
-      image: bookImageRead,
-      title: bookTitleRead,
-      source: bookSourceRead,
-      category: bookCategoryRead,
-      memo: bookMemoRead
+      image: bookImage,
+      title: bookTitle,
+      source: bookSource,
+      category: bookCategory,
+      memo: bookMemo
+    };
+
+    // 책 카드 생성 및 추가
+    createBookCard(newBook);
+
+    // 로컬 스토리지에 책 저장
+    const storedBooks = JSON.parse(localStorage.getItem('bookList')) || [];
+    storedBooks.push(newBook);
+    localStorage.setItem('bookList', JSON.stringify(storedBooks));
+
+    // 책 추가 모달 닫기
+    document.getElementById('newBookForm').reset();
+    
+    // 모달 닫기
+    addBookModal.hide();
+  }
+
+
+// 새 책 카드 생성 (기존 기능에 추가)
+function createBookCard(book, index) {
+    const bookList = document.getElementById('bookList');
+  
+    const newCol = document.createElement('div');
+    newCol.className = 'col-6 col-sm-3 book-card';
+    newCol.innerHTML = `
+      <div class="card" style="width: 13rem;">
+        <img src="${book.image}" class="card-img-top" alt="${book.title}">
+        <div class="card-body">
+          <h5 class="card-title">${book.title}</h5>
+          <p class="card-text">${book.source}</p>
+          <p class="card-text">${book.category}</p>
+          <button class="btn btn-primary" onclick="openMemo(this)">내용 메모</button>
+          <button class="btn btn-warning" onclick="showMoveModal(${index})">읽었던 책으로 이동</button>
+          <button class="btn btn-danger" onclick="showDeleteModal(${index})">삭제</button>
+          <div class="memoModal" style="display: none;">
+            <div class="memo-content">
+              <h5>메모 작성</h5>
+              <textarea rows="4" cols="50" placeholder="메모를 입력하세요...">${book.memo}</textarea><br>
+              <button class="btn btn-secondary" onclick="closeMemo(this)">Close</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    `;
+  
+    // 새로운 책 카드를 추가
+    bookList.appendChild(newCol);
+  }
+  
+
+
+
+
+//읽은 책 추가 
+function addReadBook() {
+    const image = document.getElementById('bookImage').value;
+    const title = document.getElementById('bookTitle').value;
+    const source = document.getElementById('bookSource').value;
+    const category = document.getElementById('bookCategory').value;
+    const memo = document.getElementById('bookMemo').value;
+
+    const newBook = {
+      image,
+      title,
+      source,
+      category,
+      memo,
     };
 
     // 책 카드 생성 및 추가
@@ -249,9 +239,9 @@ function addReadBook() {
     localStorage.setItem('readBookList', JSON.stringify(readBooks));
 
     // 책 추가 모달 닫기
-    const addReadBookModal = new bootstrap.Modal(document.getElementById('addReadBookModal'));
-    addReadBookModal.hide();
-    document.getElementById('newReadBookForm').reset();
+    document.getElementById('newBookForm').reset();
+    console.log('addBookModal', addBookModal);
+    addBookModal.hide();
   }
 
 
@@ -285,68 +275,22 @@ function createReadBookCard(book, index) {
   readBookList.appendChild(newCol);
 }
 
-// // 읽고싶은 책 목록 만들기 
 
-// //읽은 책 추가 
-// function addReadBook() {
-//     const bookImageRead = document.getElementById('bookImageRead').value;
-//     const bookTitleRead = document.getElementById('bookTitleRead').value;
-//     const bookSourceRead = document.getElementById('bookSourceRead').value;
-//     const bookCategoryRead = document.getElementById('bookCategoryRead').value;
-//     const bookMemoRead = document.getElementById('bookMemoRead').value;
-
-//     const newBook = {
-//       image: bookImageRead,
-//       title: bookTitleRead,
-//       source: bookSourceRead,
-//       category: bookCategoryRead,
-//       memo: bookMemoRead
-//     };
-
-//     // 책 카드 생성 및 추가
-//     createReadBookCard(newBook);
-
-//     // 로컬 스토리지에 책 저장
-//     const readBooks = JSON.parse(localStorage.getItem('readBookList')) || [];
-//     readBooks.push(newBook);
-//     localStorage.setItem('readBookList', JSON.stringify(readBooks));
-
-//     // 책 추가 모달 닫기
-//     const addReadBookModal = new bootstrap.Modal(document.getElementById('addReadBookModal'));
-//     addReadBookModal.hide();
-//     document.getElementById('newReadBookForm').reset();
-//   }
+const setBooks = (type) => {
+    console.log('이건 setbook에 대한', type);
+    if (type === "add") {
+        addBook(); 
+    } else {
+        console.log('addread에 대한 함수')
+        addReadBook();
+    }}
 
 
-// // 읽었던 책 카드 생성
-// function createReadBookCard(book, index) {
-//   const readBookList = document.getElementById('readBookList');
+  
 
-//   const newCol = document.createElement('div');
-//   newCol.className = 'col-6 col-sm-2 book-card';
-//   newCol.innerHTML = `
-//     <div class="card" style="width: 13rem;">
-//       <img src="${book.image}" class="card-img-top" alt="${book.title}">
-//       <div class="card-body">
-//         <h5 class="card-title">${book.title}</h5>
-//         <p class="card-text">${book.source}</p>
-//         <p class="card-text">${book.category}</p>
-//         <button class="btn btn-primary" onclick="openMemo(this)">내용 메모</button>
-//         <button class="btn btn-danger" onclick="showDeleteModal(${index})">삭제</button>
-//         <div class="memoModal" style="display: none;">
-//           <div class="memo-content">
-//             <h5>메모 작성</h5>
-//             <textarea rows="4" cols="50" placeholder="메모를 입력하세요...">${book.memo}</textarea><br>
-//             <button class="btn btn-secondary" onclick="closeMemo(this)">Close</button>
-//           </div>
-//         </div>
-//       </div>
-//     </div>
-//   `;
 
-//   // 새로운 책 카드를 추가
-//   readBookList.appendChild(newCol);
-// }
+
+
 
 
 // 페이지 로드 시 로컬스토리지에서 책 목록 불러오기
@@ -357,3 +301,27 @@ window.onload = function() {
   storedBooks.forEach((book, index) => createBookCard(book, index));
   readBooks.forEach((book, index) => createReadBookCard(book, index));
 };
+
+  
+
+// 책 필터링 함수
+function filterBooks() {
+    const bookSourceFilter = document.getElementById('bookSourceFilter').value;
+    const bookCategoryFilter = document.getElementById('bookCategoryFilter').value;
+  
+    // 로컬 스토리지에서 저장된 읽었던 책 목록 가져오기
+    const readBooks = JSON.parse(localStorage.getItem('readBookList')) || [];
+  
+    // 필터링: 선택한 source와 category에 맞는 책만 필터링
+    const filteredBooks = readBooks.filter(book => {
+      const matchesSource = (bookSourceFilter === 'all' || book.source === bookSourceFilter);
+      const matchesCategory = (bookCategoryFilter === 'all' || book.category === bookCategoryFilter);
+      return matchesSource && matchesCategory;
+    });
+  
+    // 기존 책 목록 초기화
+    document.getElementById('readBookList').innerHTML = '';
+  
+    // 필터링된 책 목록 다시 그리기
+    filteredBooks.forEach((book, index) => createReadBookCard(book, index));
+  }
