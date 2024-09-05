@@ -1,0 +1,208 @@
+@import url('./font.css');
+
+.navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    background-color: #f8f9fa;
+  }
+  body {
+    padding-top: 70px; /* 내비게이션 바와 콘텐츠 겹침 방지 */
+  }
+
+.navbar-brand {
+    margin : 0 30px; 
+}
+
+.navbar-collapse { 
+  transform: translateY(+6px);
+}
+
+.nav-dropdownbar { 
+    margin : 0 30px; 
+    gap : 20px; 
+    display: flex; 
+}
+
+.nav-book-links {
+    display: flex; 
+    gap: 10px;
+    margin-right: 20px; 
+}
+
+
+.form-switch { 
+  margin-right: 20px; 
+  transform: translateY(+6px);
+}
+
+.header-banner {
+    position: relative;
+    background: url('./image/booklog_banner.png') no-repeat center center;
+    background-size: cover;
+    height: 600px;
+    display: flex; 
+    align-items: flex-end;
+    justify-content: flex-end;
+    padding: 20px;
+
+  }
+
+  .banner-text {
+    color: white;
+    display: inline-block;
+    align-items: flex-end;
+    justify-content: flex-end;
+    text-align: right;
+    padding: 0 50px; 
+    font-family: 'BookkMyungjo-Bd';
+  }
+
+  /* 배경 위에 그라디언트 오버레이 */
+.header-banner::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.4); /* 어두운 오버레이 */
+  }
+
+  /* 배너 내 텍스트와 로고 */
+ .header-banner h3, .header-banner h4{
+    position: relative;
+    z-index: 1;
+    font-size: 1.3rem;
+    font-weight: 500;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
+    color: rgba(255, 255, 255, 0.8);
+  }
+
+.header-banner h3 {
+    margin-bottom: 10px; /* h3와 h4 간격 */
+}
+
+.header-banner h4 {
+  font-size: 1.1rem; 
+  margin-bottom: 10px; /* h4들 간의 간격 */
+}
+
+.login-section {
+  background-color: white;
+  padding: 30px;
+  border-radius: 10px;
+  max-width: 400px;
+  margin: 100px auto;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.login-section h2 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.welcome-message {
+  text-align: center;
+  margin-top: 20px;
+  color: #2c3e50;
+  font-size: 1.2rem;
+  display: none;
+}
+
+.error-message {
+  text-align: center;
+  margin-top: 20px;
+  color: red;
+  font-size: 1.2rem;
+  display: none;
+}
+
+/* 다음 섹션 스타일 */
+.next-section {
+  display: none;
+  text-align: center;
+  font-size: 1.5rem;
+  height: 100px;
+  background-color: rgb(141, 135, 135);
+  color: black; /* 글씨가 잘 보이도록 흰색으로 설정 */
+  display: flex; /* Flexbox 사용 */
+  justify-content: center; /* 가로 중앙 정렬 */
+  align-items: center; /* 세로 중앙 정렬 */
+  padding: 0px; 
+ 
+  font-family: 'BMHANNAAir';
+}
+
+
+#nextMessage { 
+  padding: 35px; 
+}
+
+.readingBooks { 
+  display: flex; 
+  background-color: white;
+  border: 2px solid gray; 
+  border-radius: 10px;
+  height: auto;  
+  width: auto;
+  max-width: 1200px; /* 최대 너비 설정 */
+  margin: 20px auto; /* 자동 여백으로 중앙 정렬 */
+  justify-content: center;
+  align-items: center;
+  padding: 20px; 
+}
+
+.readingBookTitle { 
+  align-content: center;
+}
+
+.book-card { 
+  margin: 5px 0; 
+}
+
+.card-img-top {
+  width: 100%; /* 카드의 너비에 맞춤 */
+  height: 200px; /* 원하는 고정된 높이 설정 */
+  object-fit: scale-down; /* 이미지를 잘라서 고정된 크기에 맞춤 */
+  border-radius: 10px; /* 둥근 모서리가 필요하면 추가 */
+}
+
+#memoModal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  border: 1px solid gray;
+  padding: 20px;
+  z-index: 1000;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+}
+
+.memo-content textarea {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+.memo-content button {
+  margin-right: 10px;
+}
+
+.memo-content {
+  margin: 10px 0;
+}
+
+.modal-content {
+  padding: 20px;
+}
+
+
+.readFinishBooks-section {
+  background-color: beige;
+  width: auto; 
+  height: auto; 
+}
