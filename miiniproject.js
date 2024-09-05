@@ -141,7 +141,7 @@ function moveBook() {
   document.getElementById('readBookList').innerHTML = '';
   readBooks.forEach((book, index) => createReadBookCard(book, index));
 
-  var moveModal = bootstrap.Modal.getInstance(document.getElementById('moveBookModal'));
+  const moveModal = bootstrap.Modal.getInstance(document.getElementById('moveBookModal'));
   moveModal.hide();
 }
 
@@ -176,7 +176,7 @@ const addBookModal = new bootstrap.Modal('#addBookModal');
     
     // 모달 닫기
     addBookModal.hide();
-  }
+  } 
 
 
 // 새 책 카드 생성 (기존 기능에 추가)
