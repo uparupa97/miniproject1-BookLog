@@ -249,7 +249,7 @@ function addReadBook() {
 
     // 책 추가 모달 닫기
     const addReadBookModal = new bootstrap.Modal(document.getElementById('addReadBookModal'));
-    addBookModal.hide();
+    addReadBookModal.hide();
     document.getElementById('newReadBookForm').reset();
   }
 
