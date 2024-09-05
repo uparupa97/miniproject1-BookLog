@@ -271,12 +271,32 @@
 
 <div class="container text-center readBooks" id="readFinishlist">
   <div class="row readFinishBooks-section">
+    
     <div class="col-12">
       <br/>
       <div class="readFinishlist">
         <h1 >읽었던 책 목록</h1>
+        <br/>
+        <div class="filter-controls">
+          <label for="bookSourceFilter">Book Source:</label>
+          <select id="bookSourceFilter" class="form-select">
+            <option value="all">All</option>
+            <option value="밀리의 서재">밀리의 서재</option>
+            <option value="윌라">윌라</option>
+            <option value="종이책">종이책</option>
+            <option value="기타">기타</option>
+          </select>
+      
+          <label for="bookCategoryFilter">Book Category:</label>
+          <select id="bookCategoryFilter" class="form-select">
+            <option value="all">All</option>
+            <option value="경제/경영">경제/경영</option>
+            <option value="소설">소설</option>
+            <option value="시/에세이">시/에세이</option>
+          </select>
       </div>
-      <br/>
+      
+      </div>
       <button class="btn btn-outline-primary readfinishaddbutton" data-bs-toggle="modal" data-bs-target="#addReadBookModal">+ 책 추가</button>
 
       <div class="modal fade" id="addReadBookModal" tabindex="-1" aria-labelledby="addReadBookModalLabel" aria-hidden="true">
